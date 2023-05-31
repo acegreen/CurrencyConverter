@@ -1,0 +1,58 @@
+disabled_rules: # rule identifiers to exclude from running
+- no_fallthrough_only
+- unused_optional_binding  # e.g: if let _ = somethingOptional
+- for_where # where clauses are preferred over a single if inside a for.
+
+# rules that have both warning and error levels, can set just the warning level
+# implicitly
+line_length: 150
+file_length: 1000
+type_body_length: 500
+
+# naming rules can set warnings/errors for min_length and max_length
+# additionally they can set excluded names
+cyclomatic_complexity:
+  warning: 10 # Metric of 10 emits a warning
+  error: 20 # too high but allows code to compile
+
+type_name:
+  min_length: 4 # only warning
+  max_length: # warning and error
+    warning: 40
+    error: 50
+  excluded: # excluded via string
+    - T
+    - iPhone
+
+identifier_name:
+  min_length: 3 # only warning min_length
+  excluded: # excluded via string array
+    - x
+    - i
+    - y
+    - in
+    - no
+    - id
+    - vc
+    - URL
+    - h1
+    - h2
+    - h3
+    - h4
+
+opt_in_rules:
+    - force_unwrapping
+    - modifier_order
+
+# Order of modifiers. List options can be found here https://realm.github.io/SwiftLint/modifier_order.html
+modifier_order:
+    preferred_modifier_order:
+      - acl # Access control (ex: public, private, etc.)
+      - override
+
+# paths to ignore during linting. Takes precedence over `included`.
+excluded:
+  - Pods
+  - Carthage
+  - QuizTrainRunner
+# 3rd party files excluded
